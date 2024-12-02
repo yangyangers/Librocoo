@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylereaderdash.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/viewbookstyle.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <title>View Book | LibroCo.</title>
+    <style>
+        /* Custom styling for the availability status */
+        .status.available {
+            color: green;
+        }
+
+        .status.unavailable {
+            color: red;
+        }
+
+        .borrow_button.disabled {
+            background-color: grey;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a class="navbar-brand" href="{{ url_for('books') }}">
+            <img class="logo" src="{{ url_for('static', filename='images/logo.png') }}" width="250" height="50" />
+        </a>
+        
+        <div class="separator"></div>
+        <div class="navbar-links">
+            <a href="{{ url_for('books') }}" class="active">Books</a>
+            <a href="{{ url_for('requests') }}">Requests</a>
+            <a href="{{ url_for('readers') }}">Readers</a>
+        </div>
+        <div class="navbar-rightt">
+            <a href="{{ url_for('profile') }}">Profile</a>
+            <a href="{{ url_for('logout') }}">Log Out</a>
+        </div>
+    </nav>
+    <div class="divider"></div>
+
+    <div class="main-content">
+        <div class="header-row">
+            <div class="viewbook_container">
+                <div class="book_image">
+					{% if book['image'] %}
+						<!-- Display the book image -->
+						<img 
+							src="/{{ book['image'].replace('\\', '/') }}" 
+							alt="{{ book['book_title'] }}" 
+							width="300">
+					{% else %}
+						<!-- Fallback if no image is available -->
+						<img src="{{ url_for('static', filename='images/default_image.jpg') }}" alt="No Image Available" width="300">
+					{% endif %}
+				</div>
+				
+                <div class="viewbook_details">
+                    <h3 class="book_title">{{ book['book_title'] }}</h3>
+                    <h5 class="author"><strong>Author:</strong> {{ book['author'] }}</h5>
+                    <h5 class="publication_year"><strong>Year:</strong> {{ book['publication_year'] }}</h5>
+                    <h5 class="genre">Genre: <span class="genre_details">{{ book['genre'] }}</span></h5>
+                    <h5 class="availability">Status: 
+                        <span class="status {{ 'available' if availability == 'Available' else 'unavailable' }}">
+                            {{ availability }}
+                        </span>
+                    </h5>
+                    <p class="desc">{{ book['description'] }}</p>
+    
+                    <div class="view_book_button">
+                        <a href="{{ url_for('books') }}">
+                            <button type="button" class="back_button">Back</button>
+                        </a>
+                        <a href="{{ url_for('edit_book', book_id=book['book_id']) }}" class="btn">Edit Book</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+</body>
+</html>

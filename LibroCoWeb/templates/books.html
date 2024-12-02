@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mainstyle.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <title> Books | LibroCo </title>
+</head>
+<body>
+    <nav>
+        <a class="navbar-brand" href="{{ url_for('books') }}">
+            <img class="logo" src="{{ url_for('static', filename='images/logo.png') }}" width="250" height="50" alt="LibroCo. Logo">
+        </a>
+        <div class="separator"></div>
+        <div class="navbar-links">
+            <a href="{{ url_for('books') }}" class="active"> Books </a>
+            <a href="{{ url_for('requests') }}"> Requests </a>
+            <a href="{{ url_for('readers') }}"> Readers </a>
+        </div>
+        <div class="navbar-right">
+            <a href="{{ url_for('profile') }}"> Profile </a>
+            <a href="{{ url_for('logout') }}"> Log Out </a>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="header-row">
+            <div class="addbook-wrapper">
+                <div class="button-container">
+                    <button class="addbook-button">
+                        <a id="AddBookBtn" href="{{ url_for('addbook') }}" class="no-hover">
+                            Add Book
+                        </a>
+                    </button>
+                </div>
+            </div>
+                <form action="{{ url_for('books') }}" method="GET" class="search-container">
+                    <input type="text" name="query" placeholder="Search a book, author, or etc." class="search-input" value="{{ request.args.get('query', '') }}">
+                    <button type="submit" class="search-btn">
+                        <img src="{{ url_for('static', filename='images/magnify.png') }}" alt="Search">
+                    </button>
+                </form>
+        </div>
+        <div class="dividerr" style="margin-bottom: 2%;"></div> <!-- Line divider -->
+        <!-- <p class="no-books-message">No books have been added yet.</p> -->
+        <div class="book-container">
+            {% for book in books %}
+                <div class="flexerist">
+                    <div class="card">
+                        <a href="{{ url_for('lib_viewbook', book_id=book['book_id']) }}" class="book-link">
+                            <img src="{{ book['image'] }}" class="card-img-top" alt="{{ book['title'] }}">
+                            <div class="card-body" style="text-align: center; padding: 20px;">
+                                <h5 class="card-title" style="margin-top: 0%; margin-bottom: 0%;">{{ book['book_title'] }}</h5>
+                                <p class="card-text" style="margin-top: 0%; margin-bottom: 0%;">{{ book['author'] }}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        
+</body>
+</html>

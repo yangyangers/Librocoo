@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mainstyle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/editreaderStyles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <title>Edit Readers | LibroCo.</title>
+</head>
+
+<body>
+    <nav>
+        <a class="navbar-brand" href="{{ url_for('books') }}">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo" width="250" height="50" alt="LibroCo. Logo">
+        </a>
+
+        <div class="separator"></div>
+
+        <div class="navbar-links">
+            <a href="{{ url_for('books') }}">Books</a>
+            <a href="{{ url_for('requests') }}">Requests</a>
+            <a href="{{ url_for('readers') }}" class="active">Readers</a>
+        </div>
+
+        <div class="navbar-right">
+            <a href="{{ url_for('profile') }}">Profile</a>
+            <a href="{{ url_for('logout') }}">Log Out</a>
+        </div>
+    </nav>
+
+    <div class="divider"></div> <!-- Line divider -->
+
+    <div class="container">
+        <div class="readers_container">
+            <h3 class="readers_header">Name</h3>
+            <ol class="readers_list">
+                <li data-name="Taylor Swift" data-phone="09999999999" data-email="taylorswift@gmail.com"
+                    data-history="Book 1,Book 2,Book 3">Taylor Swift</li>
+                    <li>Nina Dangcalan</li>
+                    <li>Kevin Asendiente</li>
+                    <li>Lyca Apostol</li>
+                    <li>Shaznay Lopez</li>
+                    <li>Anthony Bridgerton</li>
+                    <li>Benedict Bridgerton</li>
+                    <li>Colin Bridgerton</li>
+                    <li>Daphne Bridgerton</li>
+                    <li>Eloise Bridgerton</li>
+                    <li>Francesca Bridgerton</li>
+                    <li>Gregory Bridgerton</li>
+                    <li>Hyacinth Bridgerton</li>
+                    <li>Simon Basset</li>
+                    <li>Kate Sheffield</li>
+                    <li>Penelope Featherington</li>
+                    <li>Sophie Beckett</li>
+                    <li>Nina Dangcalan</li>
+                    <li>Kevin Asendiente</li>
+                    <li>Lyca Apostol</li>
+                    <li>Shaznay Lopez</li>
+                    <li>Anthony Bridgerton</li>
+                    <li>Benedict Bridgerton</li>
+                    <li>Colin Bridgerton</li>
+                    <li>Daphne Bridgerton</li>
+                    <li>Eloise Bridgerton</li>
+                    <li>Francesca Bridgerton</li>
+                    <li>Gregory Bridgerton</li>
+                    <li>Hyacinth Bridgerton</li>
+                    <li>Simon Basset</li>
+                    <li>Kate Sheffield</li>
+                    <li>Penelope Featherington</li>
+                    <li>Sophie Beckett</li>
+                <!-- Repeat for other readers -->
+            </ol>
+        </div>
+
+        <div class="main_content">
+            <div class="profile_editcontainer">
+                <div class="profile_image">
+                    <div class="overlay_wrapper">
+                        <img src="{{ url_for('static', filename='images/profImage.png') }}" class="responsive_image" alt="Profile Image">
+                        <div class="image_overlay">
+                            <img src="{{ url_for('static', filename='images/upload_photo.png') }}" class="upload" alt="Upload Icon">
+                        </div>
+                    </div>
+                </div>
+                <form class="profile_form" action="{{ url_for('update_reader') }}" method="POST">
+                    <label for="full_name">Full Name</label>
+                    <input type="text" id="full_name" name="full_name" value="Taylor Swift">
+
+                    <label for="contact">Contact</label>
+                    <input type="text" id="contact" name="contact" value="09999999999">
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" value="taylorswift@gmail.com">
+
+                    <!-- Buttons -->
+                    <div class="button_group">
+                        <a href="{{ url_for('readers') }}">
+                            <button type="button" class="cancel_button">Cancel</button>
+                        </a>
+                        <button type="submit" class="save_button">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

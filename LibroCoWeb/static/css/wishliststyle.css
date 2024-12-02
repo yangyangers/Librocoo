@@ -1,0 +1,105 @@
+@font-face {
+    font-family: 'Istok Web';
+    src: url('/static/fonts/IstokWeb-Regular.ttf') format('truetype');
+}
+
+.select-button {
+    background-color: #066a69;
+    /* Default color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin-left: 5px;
+    border-radius: 5px;
+}
+
+.delete-button {
+    border: none;
+    color: #6F0C0C;
+    background-color: #f8f8f8;
+    margin-left: 6px;
+    font-size: 18px;
+}
+
+/* Container for books */
+.book-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+/* Card styles */
+.card {
+    position: relative;
+    flex: 0 1 calc(14.28% - 10px); /* Fit 7 cards per row */
+    margin: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center;
+    background-color: #fff;
+}
+
+/* Checkbox position */
+.select-checkbox {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 10;
+    transform: scale(1.5);
+}
+
+/* Book image */
+.card-img-top {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Card body styles */
+.card-body {
+    padding: 10px;
+}
+
+.card-title {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.card-text {
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .card {
+        flex: 0 1 calc(33.33% - 10px); /* 3 cards per row for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        flex: 0 1 calc(50% - 10px); /* 2 cards per row for very small screens */
+    }
+}
+
+
+.flash-message {
+    background-color: #f8d7da; /* Light red background for alerts */
+    color: #721c24; /* Dark red text for contrast */
+    padding: 10px;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.button-container {
+    margin-top: 14px;
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylereaderdash.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/viewbookstyle.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <title>View Book | LibroCo.</title>
+    <style>
+        /* Custom styling for the availability status */
+        .status.available {
+            color: green;
+        }
+
+        .status.unavailable {
+            color: red;
+        }
+
+        .borrow_button.disabled {
+            background-color: grey;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a class="navbar-brand" href="{{ url_for('library') }}">
+            <img class="loogo" src="{{ url_for('static', filename='images/logo.png') }}" width="250" height="50" />
+        </a>
+
+        <div class="separatorr"></div>
+
+        <div class="navbar-links">
+            <a href="{{ url_for('library') }}" class="active">Library</a>
+            <a href="{{ url_for('my_books') }}">My Books</a>
+            <a href="{{ url_for('wishlist') }}">Wishlist</a>
+        </div>
+
+        <div class="navbar-right">
+            <a href="{{ url_for('profile') }}">Profile</a>
+            <a href="{{ url_for('logout') }}">Log Out</a>
+        </div>
+    </nav>
+
+    <div class="diivider"></div> <!-- Line divider -->
+
+    <div class="main-content">
+        <div class="header-row">
+            <div class="viewbook_container">
+                <div class="book_image">
+					{% if book['image'] %}
+						<!-- Display the book image -->
+						<img 
+							src="/{{ book['image'].replace('\\', '/') }}" 
+							alt="{{ book['book_title'] }}" 
+							width="300">
+					{% else %}
+						<!-- Fallback if no image is available -->
+						<img src="{{ url_for('static', filename='images/default_image.jpg') }}" alt="No Image Available" width="300">
+					{% endif %}
+				</div>
+
+                <div class="viewbook_details">
+                    <h3 class="book_title">{{ book['book_title'] }}</h3>
+                    <h5 class="author"><strong>Author:</strong> {{ book['author'] }}</h5>
+                    <h5 class="publication_year"><strong>Year:</strong> {{ book['publication_year'] }}</h5>
+                    <h5 class="genre">Genre: <span class="genre_details">{{ book['genre'] }}</span></h5>
+
+                    <!-- Change the color based on availability -->
+                    <h5 class="availability">Status: 
+                        <span class="status {{ 'available' if availability == 'Available' else 'unavailable' }}">
+                            {{ availability }}
+                        </span>
+                    </h5>
+
+                    <div class="description">
+                        <p>{{ book['description'] }}</p>
+                    </div>
+
+                    <div class="editbook_button_group">
+                        <a href="{{ url_for('library') }}">
+                            <button type="button" class="back_button">Back</button>
+                        </a>
+
+                        <a href="{{ url_for('add_to_wishlist', book_id=book['book_id']) }}">
+                            <button type="button" class="addwishlist_button" 
+                                {% if book['book_id'] in user_wishlist %} disabled style="background-color: grey; cursor: not-allowed;" {% endif %}>
+                                {% if book['book_id'] in user_wishlist %} Added to Wishlist {% else %} Add to Wishlist {% endif %}
+                            </button>
+                        </a>
+
+                        <!-- Disable the borrow button if unavailable -->
+                        <form action="{{ url_for('borrow') }}" method="post">
+                            <input type="hidden" name="book_id" value="{{ book['book_id'] }}">
+                            <button type="submit" class="borrow_button {{ 'disabled' if availability == 'Unavailable' else '' }}" 
+                                    {% if availability == 'Unavailable' %} disabled {% endif %}>
+                                Borrow
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

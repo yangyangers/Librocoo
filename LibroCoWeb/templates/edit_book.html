@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/mainstyle.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/addbookStyles.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <title>Edit Book | LibroCo.</title>
+    <style>
+        .addbook_form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 470px;
+            box-sizing: border-box;
+            padding-right: 20px;
+            margin-left: 20px;
+        }
+        
+        .error-message {
+            margin-top: 5px;
+            text-align: left;
+            color: #8e0101;
+            font-size: 14px;
+            display: none;
+        }
+
+        .error-icon {
+            margin-right: 5px;
+            display: inline;
+            width: 16px;
+            height: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a class="navbar-brand" href="{{ url_for('books') }}">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo" width="250" height="50" />
+        </a>
+
+        <div class="separator"></div>
+
+        <div class="navbar-links">
+            <a href="{{ url_for('books') }}" class="active">Books</a>
+            <a href="{{ url_for('requests') }}">Requests</a>
+            <a href="{{ url_for('readers') }}">Readers</a>
+        </div>
+
+        <div class="navbar-right">
+            <a href="{{ url_for('profile') }}">Profile</a>
+            <a href="{{ url_for('login') }}">Log Out</a>
+        </div>
+    </nav>
+
+    <div class="divider"></div> <!-- Line divider -->
+
+    <div class="addbook_container">
+        <!-- Book image section -->
+        <div class="edit-book book-image">
+            <div class="overlay_wrapper2">
+                <label for="image_upload">
+                    <div class="image_overlay">
+                        <img src="{{ url_for('static', filename='images/upload_photo.png') }}">
+                    </div>
+                    <img id="image" style="height: 25.5rem; width: 18rem;">
+                </label>
+            </div>
+        </div>
+
+        <!-- Edit book form -->
+        <form class="addbook_form" action="{{ url_for('edit_book', book_id=book['book_id']) }}" method="POST" enctype="multipart/form-data" novalidate>
+            <div class="textForm_container">
+                <label for="book_title">Book Title</label>
+                <input type="text" id="book_title" name="book_title" value="{{ book['book_title'] }}" required>
+
+                <div class="side_by_side">
+                    <div>
+                        <label for="author">Author</label>
+                        <input type="text" id="author" name="author" value="{{ book['author'] }}" required>
+                    </div>
+                    <div>
+                        <label for="publication_year">Publication Year</label>
+                        <input type="number" id="publication_year" name="publication_year" value="{{ book['publication_year'] }}">
+                    </div>
+                </div>
+
+                <label for="genre">Genre</label>
+                <select id="genre" name="genre">
+                    <option value="{{ book['genre'] }}" selected>{{ book['genre'] }}</option>
+                    <option value="fiction">Fiction</option>
+                    <option value="non-fiction">Non-fiction</option>
+                    <option value="romance">Romance</option>
+                    <option value="science-fantasy">Science/Fantasy</option>
+                    <option value="horror-thriller">Horror/Thriller</option>
+                </select>
+
+                <label for="description">Description</label>
+                <textarea id="description" name="description" rows="4">{{ book['description'] }}</textarea>
+
+                <input type="file" name="image_upload" id="image_upload" style="display:none;" onchange="readURL(this)">
+
+                {% if error_message %}
+                <div class="error-message" id="errorMessage" style="display: block;">
+                    <img src="{{ url_for('static', filename='images/error_icon.png') }}" alt="Error icon" class="error-icon">
+                    <span id="errorText" class="error-text">{{ error_message }}</span>
+                </div>
+                {% endif %}
+
+                <div class="addbook_button_group">
+                    <a href="{{ url_for('books') }}">
+                        <button type="button" class="back_button">Cancel</button>
+                    </a>
+                    <a href="{{ url_for('delete_book', book_id=book['book_id']) }}">
+                        <button type="button" class="delete_button">Delete</button>
+                    </a>
+                    <button type="submit" class="save_button">Save Changes</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('image').src = e.target.result;
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+</body>
+
+</html>

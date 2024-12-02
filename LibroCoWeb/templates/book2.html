@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylereaderdash.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/viewbookstyle.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <title> View Book | LibroCo. </title>
+
+</head>
+
+<body>
+    <nav>
+        <a class="navbar-brand" href="{{ url_for('library') }}">
+            <img div class="logo" src="{{ url_for('static', filename='images/logo.png') }}" width="250" height="50" />
+        </a>
+        
+
+        <div class="separator"></div>
+
+        <div class="navbar-links">
+            <a href="library.html" class="active"> Library </a>
+            <a href="mybooks.html"> My Books </a>
+            <a href="wishlist.html"> Wishlist </a>
+        </div>
+
+        <div class="navbar-right">
+            <a href="profile.html"> Profile </a>
+            <a href="logout.html"> Log Out </a>
+        </div>
+    </nav>
+    <div class="divider"></div> <!-- Line divider -->
+	
+	<div class="main-content">
+        <div class="header-row">
+            <div class="book2_containerr">
+                <div class="book_imagee">
+                    <div class="overlay_wrapper">
+                        <img src="{{ url_for('static', filename='images/book_imagee.png') }}" class="responsive_image" alt="Book Image">
+                    </div>
+                </div>
+
+
+     <div class="viewbook_details">
+                    <h3 class="book_title">{{ book['book_title'] }}</h3>
+					<h5 class="author"><strong>Author:</strong> {{ book['author'] }}</h5>
+					<h5 class="publication_year"><strong>Year:</strong> {{ book['publication_year'] }}</h5>
+					<h5 class="genre">Genre: <span class="genre_details">{{ book['genre'] }}</span></h5>
+					<h5 class="availability"> Availability: <span class="status">{{ book['availability'] }}</span></h5>
+					
+					<div class="description">{{ book['description'] }}</div>
+					
+					
+
+                    <div class="editbook_button_group">
+                        <a href="{{ url_for('library') }}">
+                            <button type="button" class="back_button">Back</button>
+                        </a>
+                        <a href="{{ url_for('wishlist') }}">
+                            <button type="button" class="addwishlist_button">Add To Wishlist</button>
+                        </a>
+                        <button type="submit" class="borrow_button">Borrow</button>
+                    </div>
+                    </form>
+                </div>
+				
+            </div>
+        </div>
+    <script>
+        // Simulate fetching book availability (can be dynamic)
+        const bookStatus = 'Unavailable'; // Set to 'Available' or 'Unavailable'
+        const statusElement = document.getElementById('status');
+        const borrowButton = document.getElementById('borrowButton');
+
+        // Set status text and color based on availability
+        statusElement.innerText = bookStatus;
+
+        if (bookStatus === 'Available') {
+            statusElement.classList.add('status-available');
+        } else {
+            statusElement.classList.add('status-unavailable');
+            borrowButton.classList.add('disabled');
+            borrowButton.disabled = true;
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mainstyle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/readersStyles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <title>Readers | LibroCo.</title>
+</head>
+
+<body>
+    <nav>
+        <a class="navbar-brand" href="{{ url_for('books') }}">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo" width="250" height="50"
+                alt="LibroCo. Logo">
+        </a>
+        <div class="separator"></div>
+        <div class="navbar-links">
+            <a href="{{ url_for('books') }}">Books</a>
+            <a href="{{ url_for('requests') }}">Requests</a>
+            <a href="{{ url_for('readers') }}" class="active">Readers</a>
+        </div>
+        <div class="navbar-right">
+            <a href="{{ url_for('profile') }}">Profile</a>
+            <a href="{{ url_for('logout') }}">Log Out</a>
+        </div>
+    </nav>
+
+    <div class="divider"></div> <!-- Line divider -->
+
+    <div class="container">
+        <div class="readers_container">
+            <h3 class="readers_header">Name</h3>
+            <ol class="readers_list">
+                {% for reader in readers %}
+                <li data-name="{{ reader.name }}" 
+                    data-email="{{ reader.email }}" 
+                    data-contact="{{ reader.contact }}"
+                    data-history="{{ ', '.join(reader.history) }}"
+                    data-image="{{ reader.user_image }}"  
+                    onclick="showReaderDetails(this)">
+                    {{ reader.name }}
+                </li>
+                {% endfor %}
+            </ol>
+        </div>
+
+        <div class="main_content">
+            <div class="profile_container">
+                <div class="profile_image">
+                    <!-- Check if the first reader has a profile image; if not, show the default image -->
+                    {% if readers %}
+                        <img src="{{ url_for('static', filename=(readers[0].user_image if readers[0].user_image else 'images/default_profile.png')) }}" alt="Profile Image">
+                    {% else %}
+                        <img src="{{ url_for('upload_image', filename=reader.user_image) }}" alt="Profile Image">
+                    {% endif %}
+                </div>
+                <div class="profile_details">
+                    <h3 class="name">{{ readers[0].name if readers else 'No Readers' }}</h3>
+                    <h5 class="label">Contact: <span class="contact_details">{{ readers[0].contact if readers else ''
+                            }}</span></h5>
+                    <h5 class="label">Email: <span class="email_details">{{ readers[0].email if readers else ''
+                            }}</span></h5>
+                </div>
+
+                <div class="delete">
+                    <!-- <a href="{{ url_for('edit_reader') }}">
+                        <button class="edit_button">Edit</button>
+                    </a> -->
+                </div>
+            </div>
+
+            <div class="book_history">
+                <h3 class="book_history_header">Book History</h3>
+                <ol class="book_list">
+                    {% for book in readers[0].history if readers %}
+                    <li>{{ book }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showReaderDetails(element) {
+            // Get reader data from data attributes
+            const name = element.getAttribute('data-name');
+            const email = element.getAttribute('data-email');
+            const contact = element.getAttribute('data-contact');
+            const history = element.getAttribute('data-history').split(', ');
+            const imageSrc = element.getAttribute('data-image'); // Added image data attribute
+
+            // Update profile details
+            document.querySelector('.name').textContent = name;
+            document.querySelector('.email_details').textContent = email;
+            document.querySelector('.contact_details').textContent = contact;
+
+            // Update profile image
+            const imageElement = document.querySelector('.profile_image img');
+            imageElement.src = imageSrc;
+            imageElement.alt = name + "'s Profile Image";
+
+            // Update book history
+            const bookList = document.querySelector('.book_list');
+            bookList.innerHTML = ''; // Clear previous history
+            history.forEach(book => {
+                const listItem = document.createElement('li');
+                listItem.textContent = book;
+                bookList.appendChild(listItem);
+            });
+        }
+
+        // JavaScript for initializing the first reader
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstReader = document.querySelector('.readers_list li');
+            if (firstReader) {
+                firstReader.classList.add('selected');
+                showReaderDetails(firstReader);
+            }
+        });
+
+        // JavaScript for keeping the selected item highlighted
+        document.querySelectorAll('.readers_list li').forEach(item => {
+            item.addEventListener('click', function () {
+                document.querySelectorAll('.readers_list li').forEach(li => li.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+
+    </script>
+</body>
+
+</html>

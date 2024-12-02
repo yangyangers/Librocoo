@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Account Recovery</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+</head>
+<body>
+    <div class="main-container recovery-mode">
+        <div class="contents">
+            <div class="row">
+                <div class="form-container">
+                    <img src="{{ url_for('static', filename='images/logo-text.png') }}" alt="LIBROCO" class="logo-image" />
+                    <h1>Account Recovery</h1>
+                    <div>
+                        <p>Enter your Email address and we’ll send you a verification code to change your password.</p>
+                    </div>
+                    <form class="form-detail" id="accountRecovery" action="{{ url_for('account_recov') }}" method="post" novalidate>
+                        <div class="form-group-login">
+                            <label for="email" class="emailLabel">Email</label>
+                            <input type="email" id="email" name="email" class="email-address" required>
+                        </div>
+
+                        {% if error_message %}
+                            <div class="error-message" id="errorMessage" style="display: block;">
+                                <img src="{{ url_for('static', filename='images/error_icon.png') }}" alt="Error icon" class="error-icon">
+                                <span id="errorText" class="error-text">{{ error_message }}</span>
+                            </div>
+                        {% endif %}
+                        
+                        <div class="button-container">
+                            <a href="{{ url_for('login') }}" id="backToLoginButton" class="form-btn" role="button" style="text-decoration: none;">Back</a>
+                            <button type="submit" id="nextButton" class="form-btn">Next</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="bg"></div>
+    </div>
+</body>
+</html>

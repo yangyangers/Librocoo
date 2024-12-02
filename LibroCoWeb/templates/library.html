@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylereaderdash.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/librarystyles.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <title> Library | LibroCo </title>
+</head>
+<body>
+    <nav>
+        <a class="navbar-brand" href="{{ url_for('library') }}">
+            <img class="logo" src="{{ url_for('static', filename='images/logo.png') }}" width="250" height="50" alt="LibroCo. Logo">
+        </a>
+        <div class="separator"></div>
+        <div class="navbar-links">
+            <a href="{{ url_for('library') }}" class="active"> Library </a>
+            <a href="{{ url_for('my_books') }}"> My Books </a>
+            <a href="{{ url_for('wishlist') }}"> Wishlist </a>
+        </div>
+        <div class="navbar-right">
+            <a href="{{ url_for('reader_profile') }}"> Profile </a>
+            <a href="{{ url_for('logout') }}"> Log Out </a>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="header-row">
+            <form action="{{ url_for('library') }}" method="GET" class="search-container">
+                <input type="text" name="query" placeholder="Search a book, author, or etc." class="search-input" value="{{ request.args.get('query', '') }}">
+                <button type="submit" class="search-btn">
+                    <img src="{{ url_for('static', filename='images/magnify.png') }}" alt="Search">
+                </button>
+            </form>
+        </div>
+        <div class="divider" style="margin-bottom: 2%;"></div>
+
+        <div class="book-container">
+			{% for book in books %}
+				<div class="flexerist">
+					<div class="card">
+						<a href="{{ url_for('view_book', book_id=book['book_id']) }}">
+                            <img src="{{ book['image'] }}" class="card-img-top" alt="{{ book['book_title'] }}">
+                            <div class="card-body" style="text-align: center; padding: 20px;">
+                                <h5 class="card-title">{{ book['book_title'] }}</h5>
+                                <p class="card-text">{{ book['author'] }}</p>
+                            </div>
+                        </a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+    </div>
+</body>
+</html>
+

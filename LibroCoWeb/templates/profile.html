@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/mainstyle.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/profilestyles.css') }}">
+    <link rel="icon" type="logo/icon" href="static/images/favicon.ico">
+    <title>Profile | LibroCo.</title>
+</head>
+
+<body>
+    <nav>
+        <a class="navbar-brand" href="{{ url_for('books') }}"><img class="logo" src="{{ url_for('static', filename='images/logo.png') }}" width="250" height="50" /></a>
+        <div class="separator"></div>
+        <div class="navvbar-links">
+            <a href="{{ url_for('books') }}">Books</a>
+            <a href="{{ url_for('requests') }}">Requests</a>
+            <a href="{{ url_for('readers') }}">Readers</a>
+        </div>
+        <div class="navvbar-right">
+            <a href="{{ url_for('profile') }}" class="active">Profile</a>
+            <a href="{{ url_for('logout') }}">Log Out</a>
+        </div>
+    </nav>
+    <div class="divider"></div> <!-- Line divider -->
+
+    <div class="profile_container">
+        <div class="profile_image">
+            <img src="{{ user['user_image'] }}" alt="Profile Image">
+        </div>
+        
+        <div class="profile_details">
+            <h3 class="name">{{ user['user_name'] }}</h3>
+            <h5 class="label">Contact: <span class="phone_details">{{ user['user_contact'] }}</span></h5>
+            <h5 class="label">Email: <span class="email_details">{{ user['user_email'] }}</span></h5>
+        </div>
+        <div class="edit">
+            <a href="{{ url_for('edit_profile') }}">
+                <button class="edit_button">Edit</button>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

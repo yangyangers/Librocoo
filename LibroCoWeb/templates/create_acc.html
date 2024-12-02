@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Signup</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+</head>
+<body>
+    <div class="main-container signup-mode" id="signupContainer">
+        <div class="contents">
+            <div class="row">
+                <div class="form-container">
+                    <img src="{{ url_for('static', filename='images/logo-text.png') }}" alt="LIBROCO" class="logo-image" />
+                    <div class="tagline"><p>Find your next favorite book.</p></div>
+                    <h1>Create an Account</h1>
+                    <form class="form-detail" id="registrationForm" action="#" method="post" novalidate>
+                        <div class="form-group-register">
+                            <label for="fullname" class="fullNameLabel">Full Name</label>
+                            <input type="text" id="userFullName" name="fullname" required>
+                        </div>
+                        <div class="form-group-register">
+                            <label for="email" class="emailLabel">Email</label>
+                            <input type="email" class="email-address" name="email" required>
+                        </div>
+                        <div class="form-group-register">
+                            <label for="password" class="passwordLabel">Password</label>
+                            <input type="password" class="user-password" name="password" required>
+                        </div>
+
+                        <!-- Display the error message if available, with the same structure as in login.html -->
+                        {% if error_message %}
+                            <div class="error-message" id="errorMessage" style="display: block;">
+                                <img src="{{ url_for('static', filename='images/error_icon.png') }}" alt="Error icon" class="error-icon">
+                                <span id="errorText" class="error-text">{{ error_message }}</span>
+                            </div>
+                        {% endif %}
+
+                        <button type="submit" id="signup-btn" class="form-btn">Register</button>
+                        <div class="form-register">
+                            <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="bg"></div>
+    </div>
+</body>
+</html>

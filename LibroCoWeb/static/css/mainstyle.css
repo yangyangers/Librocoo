@@ -1,0 +1,573 @@
+@font-face {
+    font-family: 'Istok Web';
+    src: url('/static/fonts/IstokWeb-Regular.ttf') format('truetype');
+}
+.navbar-right a {
+    transition: background-color 0.3s ease; 
+    margin-right: 8px;
+    margin-top: 2px;
+}
+
+.navbar-right a:hover {
+    background-color: #FFEDBD;
+    border-radius: 4px;
+}
+
+body {
+    background: #f8f8f8;
+    /*background-image: url(https://i.pinimg.com/564x/ec/0c/60/ec0c6065a57df10774c81d2385149531.jpg);*/
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    font-family: 'Istok Web', sans-serif;
+
+}
+
+.naavbar-links {
+    display: flex;
+    margin-left: -1px;
+    gap: 20px;
+    margin-top: -2px;
+}
+
+.navbarrr-links {
+    display: flex;
+    margin-left: .1px;
+    gap: 20px;
+    margin-top: -10px;
+}
+
+.navbarrr-right{
+    margin-top: -7px;
+    display: flex;
+    margin-left: auto;
+    margin-right: -3.5px;
+    gap: 28px;
+    padding-right: 11.5px;
+    font-size: 18px;
+}
+
+.loggo {
+    margin-top: -9px;
+    margin-left: -9px;
+}
+
+.naavbar-right{
+    margin-top: -7px;
+    display: flex;
+    margin-left: auto;
+    margin-right: -3.5px;
+    gap: 28px;
+    padding-right: 11.5px;
+    font-size: 18px;
+}
+
+nav a:hover,
+a:active {
+    color: black;
+    border-radius: 10px;
+}
+
+.logo {
+    margin: -9px;
+    margin-right: 0;
+    margin-left: -9px;
+    margin-top: -9px;
+}
+/*
+.logo {
+    margin-left: -2px;
+    margin-top: -2px;
+}
+
+.logoo {
+    margin: -9px;
+    margin-right: 0;
+    margin-left: -9px;
+    margin-top: -9px;
+}
+*/
+nav {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px;
+    background-color: #f8f8f8;
+    font-size: 18px;
+}
+
+/* Styling for the left-aligned navbar brand */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    margin-right: 40px;
+}
+
+.separator {
+    height: 40px;
+    width: 1px;
+    background-color: #ddd;
+    margin: 0 20px;
+    margin-left: 20px;
+}
+
+.navbar-links {
+    display: flex;
+    margin-top: -1px;
+    margin-left: 0%;
+    gap: 20px;
+    font-size: 18px;
+}
+
+/* Styling for the right-aligned links (Profile and Log Out) */
+/*
+.navbar-rightt {
+    display: flex;
+    margin-left: auto;
+    gap: 33px;
+    padding-right: 11.5px;
+    margin-top: 3px;
+    font-size: 18px;
+}
+
+.navbar-rightt a:hover {
+    background-color: #FFEDBD;
+    border-radius: 4px;
+}
+*/
+
+.dividerr {
+    width: auto;
+    height: 2px;
+    background-color: #ccc;
+    margin-top: 10px;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.dividder {
+    width: auto;
+    height: 2px;
+    background-color: #ccc;
+    margin-top: 1px;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.navbar-right {
+    display: flex;
+    margin-left: auto;
+    gap: 20px;
+}
+
+/* Style individual navbar links */
+nav a {
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for all links */
+.navbar-links a:hover {
+    background-color: #ffedbd;
+    border-radius: 5px;
+}
+
+.navbar-linkss a:hover {
+    background-color: #ffedbd;
+    border-radius: 5px;
+}
+
+/* Highlight the active link */
+.active {
+    background-color: #ffedbd;
+    border-radius: 5px;
+    font-weight: normal;
+}
+
+nav a:hover,
+a:active {
+    color: black;
+    border-radius: 10px;
+}
+
+/* Adjust the alignment for smaller screens */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-links,
+    .navbar-right {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    nav a {
+        width: 100%;
+        text-align: left;
+        padding: 10px 0;
+    }
+}
+
+.search-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    /* Right-align the search bar */
+    padding: 5px;
+}
+
+/* Container for the search bar */
+.search-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 6px;
+    width: 300px;
+    /* Adjust width as needed */
+    background-color: #f8f8f8;
+}
+
+/* Styling for the menu button */
+.menu-btn {
+    border: none;
+    background: none;
+    font-size: 18px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* Styling for the search input field */
+.search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 5px;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+/* Styling for the search button */
+.search-btn {
+    border: none;
+    background: none;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+/* Optional: Hover effect for buttons */
+.menu-btn:hover,
+.search-btn:hover {
+    color: none;
+}
+
+/* Line divider */
+.divider {
+    width: auto;
+    height: 2px;
+    background-color: #ccc;
+    margin-top: 10px;
+    margin-left: fixed;
+    /* Adjust to align the divider with the container */
+}
+
+/*------------------------------------------ BOOKS --------------------------------------------------*/
+.main-content {
+    margin: 10px;
+}
+
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.addbook-button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bolder;
+    border-radius: 5px;
+    background-color: #066A69;
+    font-weight: bold;
+    margin-left: -5px;
+}
+
+.no-hover {
+    text-decoration: none;
+    color: white;
+}
+
+#AddBookBtn {
+    text-decoration: none;
+    color: white;
+    font-weight: normal;
+}
+
+/* Search Bar Styling */
+.search-bar {
+    padding: 8px;
+    /* Adjust padding */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+}
+
+/* Search Button Styling */
+.search-btn {
+    background-color: none;
+    /* Changed background color to match theme */
+    color: white;
+    /* Text color changed to white */
+    border: none;
+    padding: auto;
+    /* Adjust padding for button */
+    font-size: 16px;
+    margin-left: 10px;
+    /* Adjust margin between search bar and button */
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.no-hover {
+    background-color: none;
+}
+
+/* No Books Message Styling */
+.no-books-message {
+    color: #070000;
+    margin-top: 20px;
+    margin-left: 5px;
+    font-family: 'Istok Web', sans-serif;
+    font-size: 18px;
+}
+
+/*------------------------------------------------ BOOKS FORMAT --------------------------------*/
+.book-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Align items to the start */
+    gap: 5px; /* Space between cards */
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.flexerist {
+    flex: 1 1 calc(25% - 10px); /* Adjust to 25% width with 10px gap */
+    max-width: 10.2rem; /* Max width for each item */
+    margin: 10px;
+}
+
+.card {
+    background-color: #fff;
+    overflow: hidden;
+    transition: transform 0.3s;
+    width: 100%;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 2px 10px 15px rgba(0, 0, 0, 0.2); 
+    cursor: pointer;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 250px; /* Fixed height to match the book cover size */
+    object-fit: cover; /* Ensures the image covers the area and fills the space */
+}
+
+.card-body {
+    padding: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000000;
+    margin: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.card-text {
+    font-size: 15px;
+    color: #000000;
+    margin-top: 4px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.card a {
+    text-decoration: none; /* Remove underline */
+}
+
+.card a:hover {
+    text-decoration: none;
+}
+
+.card:hover .card-title,
+.card:hover .card-text {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip; 
+}
+
+.no-books-message {
+    font-size: 18px;
+    color: #999;
+    text-align: center;
+    padding: 40px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .flexerist {
+        flex: 1 1 calc(33.33% - 10px); /* Adjust to 33.33% width with 10px gap */
+    }
+}
+
+@media (max-width: 992px) {
+    .flexerist {
+        flex: 1 1 calc(50% - 10px); /* Adjust to 50% width with 10px gap */
+        max-width: 10.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .flexerist {
+        flex: 1 1 calc(100% - 10px); /* Full width on small screens */
+        max-width: 12.5rem;
+    }
+}
+
+/*------------------------------------------------ REQUESTS --------------------------------*/
+.scrollable-table {
+    height: auto;
+    width: auto;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    font-size: 18px;
+}
+
+.scrollable-table>.table {
+    width: 100%;
+}
+
+.table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    margin: 25px 0;
+    min-width: 400px;
+    text-align: center;
+}
+
+.table th {
+    background-color: #e7e7e7;
+	opacity: 70%;
+    color: #000;
+    text-align: center;
+    position: sticky;
+    font-weight: bold;
+    padding: 0.625rem;
+    padding-left: -3.125rem;
+    padding-right: 3.438rem;
+}
+
+.table td {
+    padding: 0.625rem; 
+    padding-left: -3.125rem;
+    padding-right: 3.3rem;
+    font-weight: normal;
+    border-bottom: 1px solid #dddddd;
+    text-align: center; 
+}
+
+.table tbody tr {
+    background-color: transparent;
+}
+
+/* Styling for status labels */
+.available {
+    color: #009E05;
+    font-style: italic;
+}
+
+.unavailable {
+    color: red;
+    font-style: italic;
+}
+
+/* Icon styling */
+.tsek {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.tsek.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.eks {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin-left: -8px;
+    margin-top: -1.3px;
+    margin-right: 4px;
+}
+
+.eks.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Style the buttons and icons */
+button.approve-btn,
+button.decline-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* Disable button styling */
+button.approve-btn.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+
+/* DELETE BUTTON STYLESS */
+.delete_button {
+    background-color: #f8f8f8;
+    color: rgb(255, 2, 2);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.delete_button:hover {
+    background-color: #969696;
+}

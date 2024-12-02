@@ -1,0 +1,498 @@
+* {
+  /* outline: 1px solid red; to check positioning of elements*/
+  box-sizing: border-box;
+  margin: 0; 
+  padding: 0; 
+} 
+
+.row {
+  width: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;    
+} 
+
+@font-face {
+  font-family: "IstokWeb-Regular";
+  src: url("../fonts/IstokWeb-Regular.ttf") format("truetype");
+  font-weight: normal;
+}
+
+/* @font-face {
+  font-family: "IstokWeb-Bold";
+  src: url("../fonts/IstokWeb-Bold.ttf") format("truetype");
+  font-weight: bold;
+} */
+
+html, body {
+  font-family: "IstokWeb-Regular", sans-serif;
+  background-color: #F5F5F5;
+  min-height:100vh
+}
+
+h1 {
+  text-align: center;
+  margin: 20px auto 20px auto;
+  font-size: 42px;
+}
+
+p {
+  font-size: 28px;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh; /* Use min-height to fill viewport */
+  height: auto; /* Allow it to shrink */
+
+  width: auto;
+  align-items: stretch;
+}
+
+.bg {
+  flex-basis: 40%;
+  background-image: url('images/bg_1.jpg');
+  background-size: cover; /* Cover entire section */
+  background-position: center;
+  height: auto; /* Allow natural height */
+}
+
+.contents {
+  flex-basis: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #F5F5F5;
+}
+
+.form-container {
+  width: 100%;
+  text-align: center;
+}
+
+.form-group-login {
+  margin-bottom: 20px;
+}
+
+.form-group-login label {
+  text-align: left; 
+  display: block;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.form-group-login input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #969696;
+  border-radius: 4px;
+  background: #F5F5F5;
+  font-size: 18px;
+  height: 54px;
+
+}
+
+.form-group-newpass label {
+  text-align: left; 
+  display: block;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.form-group-newpass input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #969696;
+  border-radius: 4px;
+  background: #F5F5F5;
+  font-size: 18px;
+  height: 54px;
+  margin-bottom: 20px;
+}
+
+.form-group-confirmpass label {
+  text-align: left; 
+  display: block;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.form-group-confirmpass input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #969696;
+  border-radius: 4px;
+  background: #F5F5F5;
+  font-size: 18px;
+  height: 54px;
+  margin-bottom: 5px;
+}
+
+.form-group-sendcode label {
+  text-align: left; 
+  display: block;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.form-group-sendcode input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #969696;
+  border-radius: 4px;
+  background: #F5F5F5;
+  font-size: 18px;
+  height: 54px;
+  margin-bottom: 50px;
+}
+
+.form-group-login label {
+  text-align: left; 
+  display: block;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.form-group-login input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #969696;
+  border-radius: 4px;
+  background: #F5F5F5;
+  font-size: 18px;
+  height: 54px;
+}
+
+.form-group-email label {
+  text-align: left; 
+  display: block;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.form-group-email input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #969696;
+  border-radius: 4px;
+  background: #F5F5F5;
+  font-size: 18px;
+  height: 54px;
+  margin-bottom: 50px;
+
+}
+
+.resetpass-mode .form-group-password .user-password {
+  margin-bottom: 50px;
+}
+
+.forgot-password {
+  text-align: right;
+  margin-top: 35px;
+  margin-bottom: 10px;
+}
+
+.forgot-password a {
+  text-decoration: none;
+  color: #066A69;
+  font-size: 18px;
+}
+
+.form-btn {
+  height: 54px;
+  width: 100%;
+  padding: 15px;
+  background-color: #f5c400;
+  border: none;
+  border-radius: 4px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.form-btn:hover {
+  background-color: #e9aa17;
+}
+
+#backToLoginButton {
+  background-color: #F5F5F5;
+  color: #066A69;
+  margin-right: 8px;
+}
+
+#backToEmailButton {
+  background-color: #F5F5F5;
+  color: #066A69;
+  margin-right: 8px;
+}
+
+.form-btn2:hover {
+  background-color: #e9aa17;
+}
+
+.form-btn2 {
+  height: 54px;
+  width: 130px;
+  padding: 15px;
+  background-color: #f5c400;
+  border: none;
+  border-radius: 4px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 170px;
+}
+/*
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  }
+
+
+.button-container {
+  display: flex;
+  justify-content: space-around;
+}
+*/
+.form-register {
+  margin-top: 18px;
+  text-align: center;
+}
+
+.form-register p {
+  font-size: 18px;
+}
+
+.form-register a {
+  color: #066A69;
+  text-decoration: none;
+}
+
+.logo-image {
+  display: block;
+  margin: 0 auto 10px auto;
+  width: 240px;
+  height: 46px;
+}
+
+@media (max-width: 991.98px) {
+  .main-container {
+      flex-direction: column;
+  }
+
+  .bg {
+      order: -1; 
+      flex-basis: auto;
+      height: 200px;
+      width: 100%;
+  }
+
+  .contents {
+      flex-basis: auto;
+      margin-bottom: 0;
+  }
+}
+
+    @media (max-width: 480px) {
+      .main-container {
+        flex-direction: column;
+    }
+
+    .row {
+    width: auto;
+    }
+
+      h1, h2 {
+      margin-bottom: 15%;
+    }
+  
+    .bg {
+        order: -1; 
+        flex-basis: auto; 
+        height: 200px; 
+        width: 100%;
+    }
+  
+    .contents {
+        flex-basis: auto; 
+        margin-bottom: 0;
+    }
+  }
+
+  @media (min-width: 360px) and (max-width: 767px) {
+    .main-container {
+      flex-direction: column; 
+  }
+
+  .row {
+    width: auto;
+    }
+    
+  .bg {
+      display: none;
+  }
+
+  .contents {
+      flex-basis: auto;
+      margin-bottom: 0; 
+  }
+  } 
+
+.resetpass-mode .main-title {
+  margin-bottom: 40px;
+}
+
+ .signup-mode h1 {
+  text-align: center;
+  margin: 20px auto 20px auto;
+  font-size: 42px;
+ }
+
+ .signup-mode p {
+  font-size: 24px;
+ }
+
+ .form-group-register label {
+  text-align: left; 
+  display: block;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.form-group-register input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #969696;
+  border-radius: 5px;
+  background: #F5F5F5;
+  font-size: 18px;
+  height: 45px;
+  margin-bottom: 20px;
+
+}
+
+body .signup-mode .form-btn {
+  height: 45px;
+  width: 100%;
+  padding: 5px;
+  background-color: #f5c400;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 20px auto auto auto;
+}
+
+body .signup-mode .form-register p {
+  font-size: 18px;
+}
+
+body .signup-mode .form-btn:hover {
+  background-color: #e9aa17;
+}
+
+body .recovery-mode p {
+  font-size: 18px;
+  text-align: left;
+  margin: 30px auto 30px auto;
+  } 
+
+  body .recovery-mode .form-btn {
+    height: 54px;
+    width: 30%;
+    padding: 15px;
+    background-color: #f5c400;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 30px auto auto auto;
+
+  }
+  
+  body .recovery-mode .form-btn:hover {
+    background-color: #e9aa17;
+  }
+
+  body .recovery-mode  p {
+    font-size: 18px;
+    text-align: left;
+    margin: 30px auto 30px auto;
+    } 
+  
+    body .recovery-mode .form-btn {
+      height: 54px;
+      width: 30%;
+      padding: 15px;
+      background-color: #f5c400;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+      margin: 30px auto auto auto;
+  
+    }
+    
+    body .recovery-mode .form-btn:hover {
+      background-color: #e9aa17;
+    }
+
+    #backToEmailButton:hover {
+      background-color: #d6d6d6;
+    }
+
+    #backToLoginButton:hover {
+      background-color: #d6d6d6;
+    }
+
+    .error-message {
+      margin-top: 5px;
+      text-align: left;
+      color: #8e0101;
+      font-size: 14px;
+      display: none;
+    }
+
+    .error-icon {
+      margin-right: 5px;
+      display: inline;
+      width: 16px;
+      height: 16px;
+    }
+
+    .form-group-register .input-error {
+      border-color: #8e0101;
+    }
+
+    .form-group-register .label-error {
+      color: #8e0101;
+    }
+
+    .form-group-login .input-error {
+      border-color: #8e0101;
+    }
+
+    .form-group-login .label-error {
+      color: #8e0101;
+    }
+    .bg {
+      background-image: url("{{ url_for('static', filename='images/bg_1.jpg') }}");
+  }
+  .bg {
+    background-image: url("../images/bg_1.jpg");
+    background-size: cover;  
+    background-position: center;
+    height: 100vh;
+    width: 100%; 
+}

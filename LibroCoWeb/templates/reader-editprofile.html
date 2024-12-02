@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/mainstyle.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/editprofilestyles.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <title>Profile | LibroCo</title>
+    <style>
+        .error-message {
+            margin-top: 5px;
+            text-align: left;
+            color: #8e0101;
+            font-size: 14px;
+            display: none;
+        }
+
+        .error-icon {
+            margin-right: 5px;
+            display: inline;
+            width: 16px;
+            height: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a class="navbar-brand" href="{{ url_for('library') }}">
+            <img class="logo" src="{{ url_for('static', filename='images/logo.png') }}" width="250" height="50" alt="LibroCo. Logo">
+        </a>
+        <div class="separator"></div>
+        <div class="naavbar-links">
+            <a href="{{ url_for('library') }}">Library</a>
+            <a href="{{ url_for('my_books') }}">My Books</a>
+            <a href="{{ url_for('wishlist') }}">Wishlist</a>
+        </div>
+        <div class="naavbar-right">
+            <a href="{{ url_for('reader_profile') }}" class="active">Profile</a>
+            <a href="{{ url_for('logout') }}">Log Out</a>
+        </div>
+    </nav>
+
+    <div class="divider"></div> <!-- Line divider -->
+
+    <div class="profile_editcontainer">
+
+        <div class="profile_image">
+            <!-- Make the profile image clickable -->
+            <label for="user_image">
+                <div class="overlay_wrapper">
+                    <!-- Display the profile image or default black if none is set -->
+                    <div class="image_overlay">
+                        <img src="static/images/upload_photo.png" class="upload" />
+                    </div>
+                    <img id="image" src="static/images/default_profile.png">
+                </div>
+            </label>
+            <!-- Hidden file input for profile image upload -->
+
+        </div>
+
+        <form class="profile_form" method="POST" action="{{ url_for('edit_reader_profile') }}" enctype="multipart/form-data"
+            novalidate>
+            <label for="full_name">Full Name</label>
+            <input type="text" id="full_name" name="full_name" value="{{ user['full_name'] }}">
+
+            <label for="contact">Contact</label>
+            <input type="tel" id="contact" name="contact" value="{{ user['contact'] }}" pattern="\d*" title="Only numbers are allowed">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" value="{{ user['email'] }}">
+
+            <input type="file" name="user_image" id="user_image" style="display:none;" onchange="readURL(this)">
+            <input type="hidden" name="current_image" value="{{ user['user_image'] }}">
+
+            {% if error_message %}
+                <div class="error-message" id="errorMessage" style="display: block;">
+                    <img src="{{ url_for('static', filename='images/error_icon.png') }}" alt="Error icon" class="error-icon">
+                    <span id="errorText" class="error-text">{{ error_message }}</span>
+                </div>
+            {% endif %}
+
+            <!-- Buttons -->
+            <div class="button_group">
+                <a href="{{ url_for('reader_profile') }}">
+                    <button type="button" class="cancel_button">Cancel</button>
+                </a>
+                <button type="submit" class="save_button">Save Changes</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('image').src = e.target.result; 
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+
+</body>
+
+</html>

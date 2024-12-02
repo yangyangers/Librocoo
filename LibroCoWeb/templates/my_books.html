@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stylereaderdash.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mybooksstyle.css') }}">
+    <link rel="icon" type="logo/icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <title> My Books | LibroCo. </title>
+</head>
+
+<body>
+    <nav>
+        <a class="navbar-brand" href="{{ url_for('library') }}">
+            <img class="logo" src="{{ url_for('static', filename='images/logo.png') }}" width="250" height="50" />
+        </a>
+        <div class="separator"></div>
+        <div class="navbar-links">
+            <a href="{{ url_for('library') }}"> Library </a>
+            <a href="{{ url_for('my_books') }}" class="active"> My Books </a>
+            <a href="{{ url_for('wishlist') }}"> Wishlist </a>
+        </div>
+        <div class="navbar-right">
+            <a href="{{ url_for('reader_profile') }}"> Profile </a>
+            <a href="{{ url_for('logout') }}"> Log Out </a>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="divider"></div> <!-- Line divider -->
+
+        <div class="block">
+        {% if books %}
+        <table class="books-table">
+            <!-- <thead>
+                <tr>
+                    <th>Book Title & Author</th>
+                    <th>Status</th>
+                    <th>Due Date</th>
+                    <th>Return</th>
+                    <th>Renew</th>
+                </tr>
+            </thead> -->
+            <tbody>
+                {% for book in books %}
+                <tr>
+                    <td><img src="{{ book['image'] }}" alt="{{ book['book_title'] }}"></td>
+                    <td>
+                        <strong class="mybook book-title">{{ book['book_title'] }}</strong><br>
+                        <small class="mybook book-author">{{ book['author'] }}</small>
+                    </td>
+                    <td id="bookStatus" class="{% if book['due_date'] < today %}overdue{% elif book['due_date'] <= expiring_date %}expiring{% else %}available{% endif %}">
+                        {% if book['due_date'] < today %}
+                        Overdue
+                        {% elif book['due_date'] <= expiring_date %}
+                        Expiring
+                        {% else %}
+                        Available
+                        {% endif %}
+                    </td>
+                    <td class="mybook due-date">{{ book['due_date'] }}</td>
+                    <td>
+                        <form action="{{ url_for('return_book', book_id=book['book_id']) }}" method="post">
+                            <button class="action-btn return-btn">Return</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{{ url_for('renew_book', book_id=book['book_id']) }}" method="post">
+                            <button class="action-btn renew-btn">Renew</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+        {% else %}
+        <p>You have no borrowed books.</p>
+        {% endif %}
+    </div>
+
+</body>
+
+</html>

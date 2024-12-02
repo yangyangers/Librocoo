@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mainstyle.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <title>Requests | LibroCo.</title>
+</head>
+
+<body>
+    <nav>
+        <a class="navbar-brand" href="{{ url_for('books') }}">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo" width="250" height="50" alt="LibroCo. Logo">
+        </a>
+
+        <div class="separator"></div>
+
+        <div class="navbar-links">
+            <a href="{{ url_for('books') }}">Books</a>
+            <a href="{{ url_for('requests') }}" class="active">Requests</a>
+            <a href="{{ url_for('readers') }}">Readers</a>
+        </div>
+
+        <div class="navbar-right">
+            <a href="{{ url_for('profile') }}">Profile</a>
+            <a href="{{ url_for('logout') }}">Log Out</a>
+        </div>
+    </nav>
+
+    <div class="divider"></div> <!-- Line divider -->
+
+    <div class="scrollable-table">
+        <table class="table">
+            <tr>
+                <th>Book Title</th>
+                <th>Author</th>
+                <th>Genre</th>
+                <th>Status</th>
+                <th>Requested By</th>
+                <th>Approve</th>
+                <th>Decline</th>
+            </tr>
+            {% for request in requests %}
+                <tr>
+                    <td>{{ request.book_title }}</td> <!-- Book Title -->
+                    <td>{{ request.author }}</td> <!-- Author -->
+                    <td>{{ request.genre }}</td> <!-- Genre -->
+                    <td class="status">
+                        {% if request.availability == 'Available' %}
+                            <span class="available">Available</span>
+                        {% else %}
+                            <span class="unavailable">Unavailable</span>    
+                        {% endif %}
+                    </td>
+                    <td>{{ request.user_name }}</td> <!-- Requested By -->
+                    <td class="action-cell">
+                        <form action="{{ url_for('approve_request', request_id=request.request_id) }}" method="post">
+                            <input type="hidden" name="request_id" value="{{ request.request_id }}">
+                            <button class="approve-btn">
+                                <img src="{{ url_for('static', filename='images/tsek.png') }}" class="tsek" alt="Approve">
+                            </button>
+                        </form>                        
+                    </td>
+                    <td class="action-cell">
+                        <form action="{{ url_for('decline_request') }}" method="post">
+                            <input type="hidden" name="request_id" value="{{ request.request_id }}">
+                            <button class="decline-btn">
+                                <img src="{{ url_for('static', filename='images/eks.png') }}" class="eks" alt="Decline">
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

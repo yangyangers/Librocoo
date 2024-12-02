@@ -1,0 +1,405 @@
+
+@font-face {
+    font-family: 'Istok Web';
+    src: url('/static/fonts/IstokWeb-Regular.ttf') format('truetype');
+}
+
+.logo {
+    margin-top: -9px;
+    margin-right: 0;
+}
+
+.form-group{
+    margin-top: 40px;
+}
+
+.separator {
+    height: 40px;
+    width: 1px;
+    background-color: #ddd;
+    margin-top: 3px;
+}
+
+/* Styling for the main navigation links */
+.navbar-links {
+    display: flex;
+    margin-left: 0%;
+    gap: 20px;
+    margin-top: -1px;
+}
+
+/* Styling for the right-aligned links (Profile and Log Out) */
+
+.addbook_container {
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    gap: 2rem;
+    box-sizing: border-box;
+}
+
+/* Center the image within the container */
+.book_image {
+    width: 290px;
+    max-height: 700px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center; /* Center image horizontally */
+    align-items: center; /* Center image vertically */
+}
+
+.book_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    resize: none;
+}
+
+.overlay_wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.image_overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.upload {
+    width: 3rem !important;
+    height: 3rem !important;
+    object-fit: contain;
+    display: block;
+}
+
+.image_overlay::before {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.addbook_form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    padding-right: 20px;
+    margin-left: 20px;
+}
+
+.addbook_form label {
+    margin-bottom: 5px;
+    font-size: 18px;
+    text-align: left;
+    width: 100%;
+    font-weight: bold;
+}
+
+.addbook_form input,
+.addbook_form textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.addbook_form textarea {
+    resize: none;
+    height: 130px;
+}
+
+.side_by_side {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.side_by_side > div {
+    flex: 1;
+    min-width: 150px;
+}
+
+.author_field {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.publication_year {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.addbook_form select {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: white;
+    font-family: 'Istok Web', sans-serif;
+}
+
+.addbook_button_group {
+    margin-top: 40px;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    gap: 3rem;
+}
+
+.back_button,
+.save_button {
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.back_button {
+    background-color: transparent;
+    color: #066A69;
+    font-weight: normal;
+}
+
+.back_button:hover {
+    background-color: #969696;
+}
+
+.save_button {
+    background-color: #f5c400;
+    color: #111010;
+    font-weight: normal;
+}
+
+.save_button:hover {
+    background-color: #e9aa17;
+}
+
+@media (max-width: 768px) {
+    .addbook_container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .book_image {
+        width: 290px;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .side_by_side {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .side_by_side > div {
+        min-width: 100%;
+        max-width: none;
+    }
+
+    .addbook_form {
+        margin-left: 0;
+        width: 100%;
+        padding-right: 0;
+    }
+
+    .addbook_button_group {
+        justify-content: center; /* Center buttons */
+        margin-top: 2rem;
+    }
+
+    .back_button,
+    .save_button {
+        margin-left: 1rem;
+        padding: 0.8rem 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-links,
+    .navbar-right {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    nav a {
+        width: 100%;
+        text-align: left;
+        padding: 10px 0;
+    }
+
+    .addbook_container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .book_image {
+        width: 290px;
+        margin-bottom: 20px;
+    }
+
+    .side_by_side {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .side_by_side > div {
+        min-width: 100%;
+        max-width: none;
+    }
+
+    .addbook_form {
+        margin-left: 0;
+        width: 100%;
+        padding-right: 0;
+    }
+
+    .addbook_button_group {
+        margin-top: 2rem;
+    }
+
+    .back_button,
+    .save_button {
+        margin-left: 1rem;
+        padding: 0.8rem 2rem;
+    }
+}
+
+
+
+
+
+/*
+.edit-book.book-image {
+    width: 290px;
+    max-height: 700px;
+    position: relative;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.edit-book.book-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    resize: none;
+}
+
+.overlay_wrapper2 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.image_overlay2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.upload2 {
+    width: 3rem !important;
+    height: 3rem !important;
+    object-fit: contain;
+    display: block;
+}
+
+.image_overlay2::before {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}*/
+
+.edit-book.book-image {
+   
+    position: relative;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.edit-book.book-image img {
+    object-fit: cover;
+    display: block;
+}
+
+.overlay_wrapper2 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.image_overlay2 {
+    position: relative;
+    width: 290px;
+    max-height: 700px;
+    object-fit: cover;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.upload2 {
+    width: 3rem !important;
+    height: 3rem !important;
+    object-fit: contain;
+    display: block;
+}
+
+.image_overlay2::before {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}

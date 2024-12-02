@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Reset Password</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+</head>
+<body>
+    <div class="main-container resetpass-mode">
+        <div class="contents">
+            <div class="row">
+                <div class="form-container">
+                    <img src="{{ url_for('static', filename='images/logo-text.png') }}" alt="LIBROCO" class="logo-image" />
+                    <h1 class="main-title">Reset Password</h1>
+                    <form id="password-reset-form" action="{{ url_for('reset_pass') }}" method="post" novalidate>
+                        <!-- New Password Field -->
+                        <div class="form-group-newpass">
+                            <label for="new-password" class="newPasswordLabel">New Password</label>
+                            <input type="password" id="new-password" name="new_password" class="user-newpassword" required>
+                        </div>
+
+                        <!-- Confirm Password Field -->
+                        <div class="form-group-confirmpass">
+                            <label for="password-verify" class="passwordLabel">Confirm Password</label>
+                            <input type="password" id="password-verify" name="confirm_password" class="user-password" required>
+                        </div>
+
+                        <!-- Error Message Display -->
+                        {% if error_message %}
+                                <div class="error-message" id="errorMessage" style="display: block;">
+                                    <img src="{{ url_for('static', filename='images/error_icon.png') }}" alt="Error icon" class="error-icon">
+                                    <span id="errorText" class="error-text">{{ error_message }}</span>
+                                </div>
+                        {% endif %}
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="form-btn">Change Password</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="bg"></div>
+    </div>
+
+    <style>
+        .error-message {
+            margin-top: 0;
+            margin-bottom: 10px; /* Add this line to create space between error message and button */
+            text-align: left;
+            color: #8e0101;
+            font-size: 14px;
+            display: none; /* This will still hide the error message unless shown */
+        }
+        .form-btn {
+            margin-top: 50px;
+        }
+    </style>
+
+</body>
+</html>

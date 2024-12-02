@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Account Recovery</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+</head>
+<body>
+    <div class="main-container recovery-mode">
+        <div class="contents">
+            <div class="row">
+                <div class="form-container">
+                    <img src="{{ url_for('static', filename='images/logo-text.png') }}" alt="LIBROCO" class="logo-image" />
+                    <h1>Account Recovery</h1>
+                    <div>
+                        <p>Check your email to get your verification code.</p>
+                    </div>
+                    <form class="form-detail" action="{{ url_for('send_code') }}" method="post" novalidate>
+                        <div class="form-group-sendcode">
+                            <label for="codeInput" class="codeLabel">Code</label>
+                            <!-- Pre-fill the input field with the verification code -->
+                            <input type="text" id="codeInput" name="user_code" maxlength="5" class="user-code" value="{{ user_code }}" required readonly>
+                        </div>
+                        <div id="errorMessage" class="error-message">
+                            <img src="{{ url_for('static', filename='images/error_icon.png') }}" alt="Error Icon" class="error-icon">
+                            <span id="errorText" class="error-text"></span>
+                        </div>
+                        <div class="button-container">
+                            <a href="{{ url_for('account_recov') }}" id="backToLoginButton" class="form-btn" role="button" style="text-decoration: none;">Back</a>
+                            <button type="submit" id="sendCodeButton" class="form-btn">Send Code</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="bg"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/mainstyle.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/profilestyles.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <title>Profile | LibroCo</title>
+</head>
+
+<body>
+    <nav>
+        <a class="navbar-brand" href="{{ url_for('library') }}">
+            <img class="logo" src="{{ url_for('static', filename='images/logo.png') }}" width="250" height="50" alt="LibroCo. Logo">
+        </a>
+        <div class="separator"></div>
+        <div class="navbar-links">
+            <a href="{{ url_for('library') }}">Library</a>
+            <a href="{{ url_for('my_books') }}">My Books</a>
+            <a href="{{ url_for('wishlist') }}">Wishlist</a>
+        </div>
+        <div class="navbar-right">
+            <a href="{{ url_for('reader_profile') }}" class="active">Profile</a>
+            <a href="{{ url_for('logout') }}">Log Out</a>
+        </div>
+    </nav>
+
+    <div class="divider"></div> <!-- Line divider -->
+
+    <div class="main-content">
+        <div class="profile_container">
+            <div class="profile_image">
+                <img src="{{ url_for('static', filename=user['user_image'] if user['user_image'] else 'images/default_profile.png') }}" alt="Profile Image">
+            </div>
+            <div class="profile_details">
+                <h3 class="name">{{ user['user_name'] }}</h3>
+                <h5 class="label">Contact: <span class="phone_details">{{ user['user_contact'] }}</span></h5>
+                <h5 class="label">Email: <span class="email_details">{{ user['user_email'] }}</span></h5>
+            </div>
+            <div class="edit">
+                <a href="{{ url_for('edit_reader_profile', id=user['user_id']) }}">
+                    <button class="edit_button">Edit</button>
+                </a>
+            </div>
+        </div>
+
+        <!-- Book History Section -->
+        <div class="book_history">
+            <h3 class="book_history_header">Book History</h3>
+            <ol class="book_list">
+                {% if book_history %}
+                    {% for book in book_history %}
+                        <li>
+                            {{ book.title }}
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <li>No book history available.</li>
+                {% endif %}
+            </ol>
+        </div>
+    </div>
+</body>
+
+</html>
